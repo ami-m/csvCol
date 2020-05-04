@@ -33,8 +33,8 @@ func initParams() runParams {
 
 	flag.StringVar(&file, "f", "", "path to input file instead of stdin")
 	flag.StringVar(&separator, "s", ",", "separator character (defaults to a comma)")
-	flag.BoolVar(&invert, "v", false, "invert (like -v in grep) return only the rows that *don't* fulfill the pattern")
-	flag.Var(&cols, "c", "list of columns to operate on")
+	flag.BoolVar(&invert, "v", false, "hide (instead of showing) the columns that were selected")
+	flag.Var(&cols, "c", "list of columns to show")
 
 	flag.Parse()
 
