@@ -32,7 +32,7 @@ Usage of csvCol:
 
 * show specific column by name
 ```shell script
-./csvCol -v -C="email" -f="./customers.csv"
+./csvCol -C="email" -f="./customers.csv"
 ```
 
 * find duplicate emails
