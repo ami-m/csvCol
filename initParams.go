@@ -11,6 +11,7 @@ type runParams struct {
 	separator rune
 	invert    bool
 	cols      []int
+	colNames  []string
 }
 
 type arrayFlags []string
@@ -30,11 +31,13 @@ func initParams() runParams {
 	var separator string
 	var invert bool
 	var cols arrayFlags
+	var colNames arrayFlags
 
 	flag.StringVar(&file, "f", "", "path to input file instead of stdin")
 	flag.StringVar(&separator, "s", ",", "separator character (defaults to a comma)")
 	flag.BoolVar(&invert, "v", false, "hide (instead of showing) the columns that were selected")
-	flag.Var(&cols, "c", "list of columns to show")
+	flag.Var(&cols, "c", "list of columns to show by index (zero based)")
+	flag.Var(&colNames, "C", "list of columns to show by name")
 
 	flag.Parse()
 
@@ -48,6 +51,7 @@ func initParams() runParams {
 		}
 	}
 	res.cols = actualCols
+	res.colNames = colNames
 
 	separatorRunes := []rune(separator)
 	res.separator = separatorRunes[0]

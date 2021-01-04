@@ -3,7 +3,7 @@ package main
 type Filter func(r Record) Record
 
 func buildFilter(p runParams) Filter {
-	if 0 == len(p.cols) {
+	if (0 == len(p.cols)) && (0 == len(p.colNames)) {
 		return buildNopFilter()
 	}
 
